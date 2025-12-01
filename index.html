@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encanto Panameño - Brand Book</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --dorado: #B6934A;
+            --turquesa: #44D7CA;
+            --blanco-perla: #F8F5F0;
+            --beige-lino: #E7DCC7;
+            --celeste: #A8DFF0;
+            --rosa: #FCAEAE;
+            --negro: #2C2C2C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'EB Garamond', serif;
+            color: var(--negro);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* SPLASH SCREEN */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--blanco-perla) 0%, var(--beige-lino) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-in-out 3s forwards;
+        }
+
+        #splash img {
+            width: 400px;
+            max-width: 80%;
+            animation: scaleIn 1.5s ease-out;
+        }
+
+        #splash .loading {
+            margin-top: 40px;
+            font-size: 24px;
+            color: var(--dorado);
+            letter-spacing: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            animation: slideDown 0.5s ease-out 3.5s forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+                display: flex;
+            }
+        }
+
+        nav .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        nav .brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dorado);
+            letter-spacing: 2px;
+        }
+
+        nav .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: transparent;
+            border: 2px solid var(--dorado);
+            color: var(--dorado);
+            padding: 8px 20px;
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        nav button:hover {
+            background: var(--dorado);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(182, 147, 74, 0.3);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background: transparent;
+            border: 2px solid var(--dorado);
+            color: var(--dorado);
+            padding: 8px 20px;
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .dropdown-btn:hover {
+            background: var(--dorado);
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.98);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            padding: 10px 0;
+            z-index: 1001;
+            margin-top: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 0;
+            font-size: 14px;
+        }
+
+        .dropdown-content button:hover {
+            background: var(--beige-lino);
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Brand logo in nav */
+        nav .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        nav .brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        nav .brand-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dorado);
+            letter-spacing: 1px;
+        }
+
+        /* CONTENT */
+        .page {
+            min-height: 100vh;
+            padding: 120px 80px 60px 80px;
+            scroll-margin-top: 80px;
+        }
+        
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--blanco-perla) 0%, var(--beige-lino) 100%);
+            text-align: center;
+            padding: 80px 80px 60px 80px;
+        }
+        
+        .cover h1 {
+            font-size: 80px;
+            color: var(--dorado);
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .cover .subtitle {
+            font-size: 32px;
+            color: var(--dorado);
+            font-weight: 500;
+            letter-spacing: 4px;
+            margin-bottom: 60px;
+        }
+        
+        .cover .tagline {
+            font-size: 20px;
+            color: var(--negro);
+            font-style: italic;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+        
+        .section-title {
+            font-size: 52px;
+            color: var(--dorado);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Elegant title style - like "HISTORIA / De la marca" */
+        .elegant-title-container {
+            text-align: center;
+            margin: 80px 0 60px 0;
+            position: relative;
+        }
+        
+        .elegant-title-main {
+            font-size: 56px;
+            color: var(--dorado);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .elegant-title-subtitle {
+            font-size: 32px;
+            color: #8B7355;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+        
+        .elegant-title-line {
+            width: 60%;
+            height: 2px;
+            background: var(--dorado);
+            margin: 25px auto 0 auto;
+        }
+        
+        /* Decoration corners */
+        .decoration-corner {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .decoration-top-left {
+            top: -40px;
+            left: 40px;
+        }
+        
+        .decoration-top-right {
+            top: -40px;
+            right: 40px;
+            transform: scaleX(-1);
+        }
+        
+        .decoration-bottom-left {
+            bottom: -40px;
+            left: 40px;
+            transform: scaleY(-1);
+        }
+        
+        .decoration-bottom-right {
+            bottom: -40px;
+            right: 40px;
+            transform: scale(-1, -1);
+        }
+        
+        .subsection-title {
+            font-size: 24px;
+            color: #2C2C2C;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+            border-left: 4px solid var(--dorado);
+            padding-left: 15px;
+        }
+        
+        .content-text {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 24px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .value-card {
+            background: var(--blanco-perla);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--dorado);
+        }
+        
+        .value-card h3 {
+            color: var(--dorado);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .color-box {
+            text-align: center;
+        }
+        
+        .color-sample {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .color-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--negro);
+            margin-bottom: 5px;
+        }
+        
+        .color-code {
+            font-size: 14px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .logo-section {
+            background: var(--blanco-perla);
+            padding: 60px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .logo-display {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .logo-variant {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .logo-variant.dorado {
+            background: white;
+        }
+
+        .logo-variant.negro {
+            background: white;
+        }
+
+        .logo-variant img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        .logo-variant h3 {
+            margin-top: 20px;
+            font-size: 20px;
+            color: var(--dorado);
+        }
+
+        .logo-variant.negro h3 {
+            color: var(--negro);
+        }
+        
+        .typography-sample {
+            background: var(--blanco-perla);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .typography-sample h2 {
+            font-size: 60px;
+            color: var(--dorado);
+            font-weight: 700;
+        }
+        
+        .typography-sample p {
+            font-size: 35px;
+            color: var(--dorado);
+            font-weight: 400;
+        }
+        
+        .target-section {
+            background: linear-gradient(135deg, var(--celeste) 0%, var(--turquesa) 100%);
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
+            margin: 30px 0;
+        }
+        
+        .target-section h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+        }
+        
+        .quote {
+            background: var(--rosa);
+            padding: 30px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-style: italic;
+            text-align: center;
+            margin: 40px 0;
+            color: var(--negro);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav .nav-buttons {
+                justify-content: center;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            nav .nav-container {
+                flex-direction: column;
+            }
+
+            nav .brand img {
+                height: 35px;
+            }
+
+            .dropdown-content {
+                position: relative;
+                box-shadow: none;
+                margin-top: 0;
+                background: var(--beige-lino);
+            }
+
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-btn {
+                width: 100%;
+            }
+
+            .page {
+                padding: 100px 30px 40px 30px;
+            }
+
+            .cover h1 {
+                font-size: 50px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .color-palette {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo-display {
+                flex-direction: column;
+            }
+        }
+        
+        @media print {
+            nav {
+                display: none !important;
+            }
+            .page {
+                padding: 60px 40px;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash">
+        <img src="encanto_logo_transparent.png" alt="Encanto Panameño">
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="brand">
+                <img src="encanto_logo_transparent.png" alt="Encanto Panameño">
+            </div>
+            <div class="nav-buttons">
+                <button onclick="scrollToSection('inicio')">Inicio</button>
+                
+                <!-- Dropdown: Atributos Intangibles -->
+                <div class="dropdown">
+                    <button class="dropdown-btn">Atributos Intangibles ▾</button>
+                    <div class="dropdown-content">
+                        <button onclick="scrollToSection('historia')">Historia</button>
+                        <button onclick="scrollToSection('vision')">Misión y Visión</button>
+                        <button onclick="scrollToSection('valores')">Valores</button>
+                        <button onclick="scrollToSection('personalidad')">Personalidad</button>
+                        <button onclick="scrollToSection('target')">Target de Usuarios</button>
+                    </div>
+                </div>
+                
+                <!-- Dropdown: Atributos Tangibles -->
+                <div class="dropdown">
+                    <button class="dropdown-btn">Atributos Tangibles ▾</button>
+                    <div class="dropdown-content">
+                        <button onclick="scrollToSection('logo')">Logo</button>
+                        <button onclick="scrollToSection('colores')">Colores</button>
+                        <button onclick="scrollToSection('tipografia')">Tipografía</button>
+                        <button onclick="scrollToSection('slogan')">Slogan</button>
+                    </div>
+                </div>
+                
+                <button onclick="scrollToSection('aplicaciones')">Aplicaciones</button>
+                <button onclick="scrollToSection('restricciones')">Restricciones</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PORTADA -->
+    <div id="inicio" class="page cover">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="encanto_logo_transparent.png" alt="Encanto Panameño" style="max-width: 500px; width: 80%; height: auto; margin-bottom: 20px;">
+        </div>
+        <p class="tagline">
+            Una marca que fusiona el patrimonio artesanal de Panamá con diseños contemporáneos, 
+            celebrando la belleza de lo hecho a mano y proyectando nuestra cultura al mundo.
+        </p>
+    </div>
+
+    <!-- ATRIBUTOS INTANGIBLES -->
+    <div id="atributos-intangibles" class="page" style="min-height: auto; padding: 80px 80px 40px 80px;">
+        <h1 class="section-title">Atributos Intangibles</h1>
+        <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            Los atributos intangibles definen la esencia y personalidad de Encanto Panameño. 
+            A continuación se presentan la historia, misión, visión, valores y público objetivo de la marca.
+        </p>
+    </div>
+
+    <!-- HISTORIA -->
+    <div id="historia" class="page">
+        <div class="elegant-title-container">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-left">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-right">
+            <h1 class="elegant-title-main">HISTORIA</h1>
+            <h2 class="elegant-title-subtitle">De la marca</h2>
+            <div class="elegant-title-line"></div>
+        </div>
+        
+        <p class="content-text">
+            Encanto Panameño nació de una idea por 4 estudiantes: transformar la tradición de 
+            la Pollera De Gala Panameña en una expresión moderna de identidad y orgullo 
+            nacional. Inspirada en el arte de las manos que tejen, bordan y encajan los símbolos 
+            más bellos del país, la marca surge como un homenaje a las mujeres artesanas y a 
+            la elegancia cultural que define a Panamá.
+        </p>
+
+        <p class="content-text">
+            Desde sus primeros bocetos, Encanto Panameño buscó dar nueva vida a la 
+            herencia textil panameña, fusionando el encanto del pasado con la frescura del 
+            presente. Cada hilo, color y detalle es un tributo a nuestra historia, reinterpretado 
+            con diseño contemporáneo y materiales responsables.
+        </p>
+
+        <div class="quote">
+            Más que una marca, Encanto Panameño es un movimiento que revaloriza lo hecho 
+            a mano, rescata oficios tradicionales y crea oportunidades sostenibles para 
+            comunidades de artesanas locales.
+        </div>
+
+        <p class="content-text">
+            Cada prenda lleva consigo un mensaje de identidad: vestir Panamá con orgullo y 
+            proyectar su cultura al mundo.
+        </p>
+
+        <p class="content-text">
+            Hoy, Encanto Panameño representa la unión entre cultura, arte y moda, 
+            manteniendo viva la esencia de nuestras raíces mientras impulsa una visión 
+            moderna, inclusiva y sostenible del diseño panameño.
+        </p>
+    </div>
+
+    <!-- VISIÓN Y MISIÓN -->
+    <div id="vision" class="page">
+        <h1 class="section-title">Visión y Misión</h1>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin: 40px 0;">
+            
+            <!-- Visión -->
+            <div style="background: linear-gradient(135deg, var(--celeste) 0%, var(--turquesa) 100%); padding: 40px; border-radius: 12px; color: white;">
+                <h2 style="font-size: 28px; margin-bottom: 20px; color: white;">Visión</h2>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    Proyectar a Panamá como un referente de moda artesanal contemporánea en Latinoamérica, 
+                    donde tradición y modernidad se fusionan en cada creación para celebrar la riqueza 
+                    cultural de nuestro país.
+                </p>
+            </div>
+            
+            <!-- Misión -->
+            <div style="background: linear-gradient(135deg, var(--rosa) 0%, var(--beige-lino) 100%); padding: 40px; border-radius: 12px; color: var(--negro);">
+                <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--dorado);">Misión</h2>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    Crear piezas de moda que honren el legado artesanal panameño, utilizando técnicas 
+                    tradicionales y diseños contemporáneos, para vestir con orgullo a quienes valoran la 
+                    autenticidad, la calidad y el impacto social positivo.
+                </p>
+            </div>
+            
+        </div>
+        
+        <h2 id="valores" class="subsection-title">Valores</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Autenticidad</h3>
+                <p>Cada prenda cuenta la historia de Panamá, tejida con amor y respeto por nuestras tradiciones.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>Calidad Artesanal</h3>
+                <p>Piezas únicas elaboradas a mano por artesanos panameños que dominan técnicas centenarias.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>Innovación Cultural</h3>
+                <p>Reinterpretamos la tradición con diseños contemporáneos que conectan con el mundo actual.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>Orgullo Panameño</h3>
+                <p>Vestir Encanto Panameño es llevar nuestra identidad nacional con elegancia y distinción.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IDENTIDAD DE MARCA -->
+    <div id="identidad" class="page">
+        <h1 class="section-title">Identidad de Marca</h1>
+        
+        <h2 id="personalidad" class="subsection-title">Personalidad</h2>
+        <p class="content-text">
+            Encanto Panameño es una marca auténtica, elegante y orgullosamente panameña. Transmite calidez, 
+            cercanía y pasión por el detalle. Su tono es amigable pero sofisticado, celebrando la tradición 
+            sin perder su espíritu contemporáneo.
+        </p>
+        
+        <h2 class="subsection-title">Promesa de Marca</h2>
+        <div class="quote">
+            "Cada pieza de Encanto Panameño es un tributo a Panamá: sus colores, su historia y su gente."
+        </div>
+        
+        <h2 id="target" class="subsection-title">Público Objetivo (Target de Usuarios)</h2>
+        
+        <!-- MERCADO PRIMARIO -->
+        <div style="background: linear-gradient(135deg, var(--dorado) 0%, #D4A574 100%); padding: 40px; border-radius: 12px; margin: 40px 0; color: white;">
+            <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center; color: white;">🇵🇦 Mercado Primario: Consumidores Panameños</h3>
+        </div>
+
+        <!-- Segmentación Geográfica - Primario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">📍 Segmentación Geográfica</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--dorado);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">País:</strong> Panamá</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">Región:</strong> Provincia de Panamá y zonas cercanas urbanas</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">Zona de alto potencial (Casco Antiguo):</strong> Área urbana y turística donde convergen el arte, la cultura y el comercio local</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segmentación Demográfica - Primario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">👥 Segmentación Demográfica</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Edad:</strong> 20 a 50 años</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Género:</strong> Hombres y mujeres (mayor afinidad femenina por la conexión con el encaje y la Pollera Panameña)</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Nivel socioeconómico:</strong> Medio y Medio-Alto</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Ocupación:</strong> Profesionales, artistas, docentes, diseñadores, emprendedores, empleados del sector cultural, turístico o educativo</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Nivel educativo:</strong> Secundaria completa o estudios universitarios</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segmentación Psicográfica - Primario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">🧠 Segmentación Psicográfica</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--turquesa);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Estilo de vida:</strong> Modernos, conscientes, amantes de la cultura, con interés en productos locales</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Personalidad:</strong> Orgullosos de su país, sensibles al arte y la historia, con gusto refinado y aprecio por la autenticidad</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Valores:</strong> Identidad cultural, respeto al trabajo artesanal</li>
+                    <li style="margin-bottom: 0;"><strong style="color: var(--dorado);">Motivaciones:</strong> Vestir orgullo nacional, rescatar las tradiciones y raíces panameñas, apoyar la producción local y al artesano panameño, elegir moda con historia y propósito</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segmentación Conductual - Primario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">🛍️ Segmentación Conductual</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--rosa-suave);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Beneficios buscados:</strong> Autenticidad, identidad cultural, diseño artesanal, conexión emocional</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Frecuencia de compra:</strong> Ocasional a media (por temporada o colección especial)</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Lealtad a la marca:</strong> Alta en clientes que valoran lo artesanal y lo nacional</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Papel de comprador:</strong> Tanto consumidor directo como comprador de regalos culturales</li>
+                    <li style="margin-bottom: 0;"><strong style="color: var(--dorado);">Canales preferidos:</strong> Tiendas locales, ferias artesanales, redes sociales, tiendas en línea o concept stores</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MERCADO SECUNDARIO -->
+        <div style="background: linear-gradient(135deg, var(--celeste) 0%, var(--turquesa) 100%); padding: 40px; border-radius: 12px; margin: 60px 0 40px 0; color: white;">
+            <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center; color: white;">✈️ Mercado Secundario: Turistas y Visitantes Internacionales</h3>
+        </div>
+
+        <!-- Segmentación Geográfica - Secundario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">📍 Segmentación Geográfica</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--dorado);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">Ubicación:</strong> Turistas que llegan a la Ciudad de Panamá, Casco Antiguo</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">Procedencia:</strong> América Latina, Norteamérica y Europa</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: var(--dorado);">Tipo de turismo:</strong> Cultural, de diseño, histórico o artesanal</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segmentación Demográfica - Secundario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">👥 Segmentación Demográfica</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Edad:</strong> 25 a 60 años</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Género:</strong> Hombres y mujeres con sensibilidad cultural</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Nivel socioeconómico:</strong> Medio, medio-alto y alto</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Ocupación:</strong> Profesionales, viajeros frecuentes, creativos, artistas, coleccionistas o amantes del diseño local</p>
+                </div>
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px; border-left: 4px solid var(--celeste);">
+                    <p style="margin: 0; line-height: 1.8; font-size: 15px;"><strong style="color: var(--dorado);">Nivel educativo:</strong> Medio a superior, con alto interés en cultura y arte latinoamericano</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segmentación Psicográfica - Secundario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">🧠 Segmentación Psicográfica</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--turquesa);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Estilo de vida:</strong> Viajeros culturales, interesados en el arte, la moda ética y experiencias auténticas</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Personalidad:</strong> Curiosos, sensibles, conscientes del valor de la historia y el trabajo artesanal</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Valores:</strong> Autenticidad, respeto por las tradiciones y apoyo al talento local</li>
+                    <li style="margin-bottom: 0;"><strong style="color: var(--dorado);">Motivaciones:</strong> Llevarse un recuerdo genuino de Panamá, valorar y apoyar el arte hecho por manos locales, comprar piezas exclusivas con historia cultural y experimentar una conexión emocional con el país visitado</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segmentación Conductual - Secundario -->
+        <div style="margin: 40px 0;">
+            <h3 style="color: var(--dorado); font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--dorado); padding-bottom: 10px;">🛍️ Segmentación Conductual</h3>
+            <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px; border-left: 4px solid var(--rosa-suave);">
+                <ul style="line-height: 2; font-size: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Beneficios buscados:</strong> Autenticidad, diseño artesanal, historia y experiencia cultural</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Frecuencia de compra:</strong> Ocasional; compra por emoción o recuerdo</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--dorado);">Lealtad de marca:</strong> Moderada</li>
+                    <li style="margin-bottom: 0;"><strong style="color: var(--dorado);">Canales de compra:</strong> Tienda de la marca Encanto Panameño ubicada en Ciudad de Panamá (Casco Antiguo), ferias culturales, puntos de venta en el aeropuerto (expansión)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ATRIBUTOS TANGIBLES -->
+    <div id="atributos-tangibles" class="page" style="min-height: auto; padding: 80px 80px 40px 80px;">
+        <h1 class="section-title">Atributos Tangibles</h1>
+        <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            Los atributos tangibles son los elementos visuales que componen la identidad de Encanto Panameño. 
+            A continuación se presentan el logo, colores, tipografía y slogan de la marca.
+        </p>
+    </div>
+
+    <!-- LOGO -->
+    <div id="logo" class="page">
+        <div class="elegant-title-container">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-left">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-right">
+            <h1 class="elegant-title-main">LOGO</h1>
+            <h2 class="elegant-title-subtitle">Identidad visual</h2>
+            <div class="elegant-title-line"></div>
+        </div>
+        
+        <h2 class="subsection-title">Descripción del Logo</h2>
+        <p class="content-text">
+            El logotipo de Encanto Panameño fusiona tres elementos icónicos de la identidad panameña:
+        </p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>La Figura Empollerada</h3>
+                <p>Representa la pollera de gala, símbolo máximo del folclore panameño, con sus detalles bordados y encajes.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>El Mapa de Panamá</h3>
+                <p>Formado por encajes florales que conectan con la figura, representando nuestra tierra y sus raíces.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>El Encaje Artesanal</h3>
+                <p>Detalles inspirados en la mundillo y otros bordados tradicionales, símbolo de excelencia artesanal.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>Tipografía Garamond</h3>
+                <p>Elegante y atemporal, refuerza el carácter sofisticado y cultural de la marca.</p>
+            </div>
+        </div>
+
+        <h2 class="subsection-title">Versiones del Logo</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; margin: 40px 0; align-items: start;">
+            
+            <!-- Versión Principal - Dorada -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; height: 100%;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; min-height: 280px;">
+                    <img src="encanto_logo_transparent.png" alt="Logo Dorado" style="max-width: 100%; max-height: 280px; height: auto; width: auto;">
+                </div>
+                <div style="text-align: center;">
+                    <h3 style="color: var(--dorado); font-size: 20px; margin-bottom: 15px;">Versión Principal Oficial</h3>
+                    <p style="color: var(--negro); font-size: 14px; line-height: 1.6; margin-bottom: 15px; text-align: left;">
+                        Logotipo completo en color dorado artesanal (#C5944E) en fondo transparente o blanco
+                    </p>
+                    <ul style="text-align: left; margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--negro);">
+                        <li><strong>Uso:</strong> presentaciones oficiales, papeles, etiquetas, packaging, redes sociales y sitio web</li>
+                        <li><strong>Sensación visual:</strong> Tradición, lujo artesanal y elegancia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Versión Secundaria - Azul -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; height: 100%;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; min-height: 280px;">
+                    <img src="encanto_logo_secundario_azul.png" alt="Logo Secundario" style="max-width: 100%; max-height: 280px; height: auto; width: auto; border-radius: 8px;">
+                </div>
+                <div style="text-align: center;">
+                    <h3 style="color: var(--dorado); font-size: 20px; margin-bottom: 15px;">Versión Secundaria</h3>
+                    <p style="color: var(--negro); font-size: 14px; line-height: 1.6; margin-bottom: 15px; text-align: left;">
+                        Logotipo en color claro sobre fondo azul profundo
+                    </p>
+                    <ul style="text-align: left; margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--negro);">
+                        <li><strong>Uso:</strong> aplicaciones digitales, fotografías o fondos de color oscuro</li>
+                        <li><strong>Objetivo:</strong> garantizar contraste y legibilidad manteniendo su elegancia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Versión Monocromática - Negra -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; height: 100%;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; min-height: 280px;">
+                    <img src="encanto_logo_noir_transparent.png" alt="Logo Negro" style="max-width: 100%; max-height: 280px; height: auto; width: auto;">
+                </div>
+                <div style="text-align: center;">
+                    <h3 style="color: var(--dorado); font-size: 20px; margin-bottom: 15px;">Versión Monocromática</h3>
+                    <p style="color: var(--negro); font-size: 14px; line-height: 1.6; margin-bottom: 15px; text-align: left;">
+                        Logotipo en color negro sobre fondo transparente o blanco
+                    </p>
+                    <ul style="text-align: left; margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--negro);">
+                        <li><strong>Uso:</strong> cuando no se pueda usar efectos metálicos o texturas, como en bordados, sellos o impresiones a una tinta</li>
+                        <li><strong>Objetivo:</strong> Mantener la identidad de la marca en formatos simples o económicos</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FCAEAE 0%, #E7DCC7 100%); padding: 25px; border-radius: 12px; margin: 40px 0;">
+            <h3 style="color: var(--negro); font-size: 18px; margin-bottom: 10px;">⚠️ Nota Importante</h3>
+            <p style="color: var(--negro); font-size: 15px; line-height: 1.6; margin: 0;">
+                <strong>No se permite</strong> crear logos secundarios con tipografías, colores o elementos gráficos 
+                diferentes al logo principal. Todas las versiones deben mantener la misma estructura visual 
+                para garantizar la coherencia de la marca.
+            </p>
+        </div>
+
+        <h2 class="subsection-title" style="margin-top: 60px;">Usos con Aliados Estratégicos</h2>
+        
+        <p class="content-text">
+            Cuando Encanto Panameño colabora con marcas aliadas, el logo puede presentarse en co-branding 
+            manteniendo la identidad visual de ambas marcas. A continuación, se muestran ejemplos de uso 
+            conjunto con DG Joyeros - Diamonds & Gold.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 50px 0; align-items: stretch;">
+            
+            <!-- Formato Horizontal -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; min-height: 200px;">
+                    <img src="encanto_aliado_dg_horizontal.png" alt="Co-branding Horizontal" style="max-width: 100%; max-height: 180px; height: auto; width: auto; display: block;">
+                </div>
+                <h3 style="color: var(--dorado); font-size: 18px; margin-bottom: 12px;">Formato Horizontal</h3>
+                <p style="color: var(--negro); font-size: 14px; line-height: 1.6;">
+                    Ideal para headers web, banners, firmas de email y materiales panorámicos
+                </p>
+            </div>
+            
+            <!-- Formato Cuadrado -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; min-height: 200px;">
+                    <img src="encanto_aliado_dg_cuadrado.png" alt="Co-branding Cuadrado" style="max-width: 100%; max-height: 180px; height: auto; width: auto; display: block;">
+                </div>
+                <h3 style="color: var(--dorado); font-size: 18px; margin-bottom: 12px;">Formato Cuadrado</h3>
+                <p style="color: var(--negro); font-size: 14px; line-height: 1.6;">
+                    Perfecto para posts de redes sociales, perfiles, avatares y formatos cuadrados
+                </p>
+            </div>
+            
+            <!-- Formato Vertical -->
+            <div style="background: var(--blanco-perla); padding: 40px; border-radius: 12px; text-align: center; display: flex; flex-direction: column;">
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; min-height: 200px;">
+                    <img src="encanto_aliado_dg_vertical.png" alt="Co-branding Vertical" style="max-width: 100%; max-height: 180px; height: auto; width: auto; display: block;">
+                </div>
+                <h3 style="color: var(--dorado); font-size: 18px; margin-bottom: 12px;">Formato Vertical</h3>
+                <p style="color: var(--negro); font-size: 14px; line-height: 1.6;">
+                    Ideal para stories, materiales verticales, packaging y displays altos
+                </p>
+            </div>
+
+        </div>
+
+        <h3 style="color: var(--dorado); font-size: 20px; margin: 30px 0 15px 0;">Lineamientos para Co-branding</h3>
+        <ul>
+            <li><strong>Jerarquía:</strong> Ambas marcas deben tener igual prominencia visual y espacial</li>
+            <li><strong>Espaciado:</strong> Mantener suficiente espacio entre ambos logos para legibilidad</li>
+            <li><strong>Colores:</strong> Respetar las paletas de color de ambas marcas</li>
+            <li><strong>Formato:</strong> Elegir el formato (horizontal, cuadrado o vertical) según el medio de aplicación</li>
+            <li><strong>Aprobación:</strong> Todo material de co-branding debe ser aprobado por ambas marcas</li>
+        </ul>
+
+        <div style="background: linear-gradient(135deg, var(--celeste) 0%, var(--turquesa) 100%); padding: 30px; border-radius: 12px; color: white; margin-top: 30px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px;">💡 Nota Importante</h3>
+            <p style="font-size: 16px; line-height: 1.6;">
+                Las colaboraciones con aliados estratégicos fortalecen la marca y amplían su alcance. 
+                Siempre mantén la coherencia visual y asegúrate de que el co-branding refleje los valores 
+                compartidos de ambas marcas.
+            </p>
+        </div>
+
+        <h2 class="subsection-title" style="margin-top: 60px;">Logo Completo</h2>
+        
+        <p class="content-text">
+            Versión optimizada del logo completo en tamaño estándar para aplicaciones web y digitales.
+        </p>
+
+        <div style="text-align: center; margin: 60px 0;">
+            <div style="display: inline-block; background: var(--blanco-perla); padding: 50px; border-radius: 12px;">
+                <img src="encanto_logo_completo_470px.png" alt="Logo Completo 470px" style="max-width: 450px; width: 100%; height: auto;">
+            </div>
+            <h3 style="color: var(--dorado); font-size: 24px; margin-top: 30px;">Logo Completo (768x768px)</h3>
+            <p style="color: var(--negro); font-size: 18px; margin-top: 15px;">
+                Tamaño estándar optimizado para headers de sitio, presentaciones y uso web general
+            </p>
+        </div>
+
+        <div class="quote" style="margin-top: 30px;">
+            Los elementos individuales permiten crear composiciones más dinámicas y adaptables a diferentes medios, 
+            manteniendo siempre la identidad visual de la marca.
+        </div>
+
+    </div>
+
+    <!-- SLOGAN -->
+    <div id="slogan" class="page">
+        <h2 class="subsection-title">Slogan</h2>
+        
+        <div class="quote">
+            "Hechos con orgullo panameño, inspirados en nuestra tierra."
+        </div>
+        
+        <p class="content-text">
+            El slogan nació del deseo de expresar, en una sola frase, el amor, la autenticidad y la identidad cultural que dan vida a cada creación de Encanto Panameño. Más que una línea publicitaria, es una declaración de valores.
+        </p>
+        
+        <h3 class="subsection-title">Composición del Slogan</h3>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>"Hechos con orgullo panameño"</h3>
+                <p>Evoca la pasión, el compromiso y la excelencia con la que se elaboran todas las piezas. Es un reconocimiento a los artesanos panameños que mantienen vivas nuestras tradiciones.</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>"Inspirados en nuestra tierra"</h3>
+                <p>Destaca la conexión emocional con Panamá: sus colores, su naturaleza, sus raíces culturales y la belleza de lo hecho a mano. Es una metáfora de la inspiración que brota del legado histórico de nuestro país.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLORES -->
+    <div id="colores" class="page">
+        <div class="elegant-title-container">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-left">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-right">
+            <h1 class="elegant-title-main">PALETA DE COLORES</h1>
+            <h2 class="elegant-title-subtitle">Cromática de marca</h2>
+            <div class="elegant-title-line"></div>
+        </div>
+        
+        <p class="content-text">
+            Los colores de Encanto Panameño fueron cuidadosamente seleccionados para reflejar la identidad cultural, artesanal y contemporánea de la marca. Cada tono transmite una emoción y un valor que representan el alma panameña: alegría, orgullo, elegancia y tradición.
+        </p>
+        
+        <div class="color-palette">
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #F8F5F0;"></div>
+                <div class="color-name">Blanco Perla</div>
+                <div class="color-code">#F8F5F0</div>
+                <p style="margin-top: 10px; font-size: 14px;">Pureza, luz y elegancia. Evoca los encajes blancos de la Pollera de Gala.</p>
+            </div>
+            
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #E7DCC7;"></div>
+                <div class="color-name">Beige Lino Claro</div>
+                <div class="color-code">#E7DCC7</div>
+                <p style="margin-top: 10px; font-size: 14px;">Tonos naturales de fibras tejidas por artesanos panameños.</p>
+            </div>
+            
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #44D7CA;"></div>
+                <div class="color-name">Turquesa Panameño</div>
+                <div class="color-code">#44D7CA</div>
+                <p style="margin-top: 10px; font-size: 14px;">El mar, la frescura y la alegría tropical. Espíritu moderno de la marca.</p>
+            </div>
+            
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #B6934A;"></div>
+                <div class="color-name">Dorado Artesanal</div>
+                <div class="color-code">#B6934A</div>
+                <p style="margin-top: 10px; font-size: 14px;">Tradición, valor y elegancia. El brillo del encaje dorado de la pollera.</p>
+            </div>
+            
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #A8DFF0;"></div>
+                <div class="color-name">Celeste Pastel</div>
+                <div class="color-code">#A8DFF0</div>
+                <p style="margin-top: 10px; font-size: 14px;">Paz, frescura y serenidad. El cielo panameño y la elegancia moderna.</p>
+            </div>
+            
+            <div class="color-box">
+                <div class="color-sample" style="background-color: #FCAEAE;"></div>
+                <div class="color-name">Rosa Suave Artesanal</div>
+                <div class="color-code">#FCAEAE</div>
+                <p style="margin-top: 10px; font-size: 14px;">Dulzura, suavidad y el toque humano detrás de cada prenda.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIPOGRAFÍA -->
+    <div id="tipografia" class="page">
+        <h1 class="section-title">Tipografía</h1>
+        
+        <div class="typography-sample">
+            <h2>ENCANTO</h2>
+            <p>PANAMEÑO</p>
+        </div>
+        
+        <h3 class="subsection-title">Garamond - Tipografía Principal</h3>
+        <p class="content-text">
+            La familia tipográfica Garamond fue elegida por su elegancia clásica y su carácter atemporal que refleja perfectamente la esencia artesanal y cultural de Encanto Panameño.
+        </p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>ENCANTO</h3>
+                <p><strong>Tamaño:</strong> 60 PT<br>
+                <strong>Peso:</strong> Bold/Semi-Bold<br>
+                <strong>Color:</strong> Dorado Artesanal #B6934A</p>
+            </div>
+            
+            <div class="value-card">
+                <h3>PANAMEÑO</h3>
+                <p><strong>Tamaño:</strong> 35 PT<br>
+                <strong>Peso:</strong> Regular/Medium<br>
+                <strong>Color:</strong> Dorado Artesanal #B6934A</p>
+            </div>
+        </div>
+        
+        <h3 class="subsection-title">Uso Tipográfico</h3>
+        <ul>
+            <li><strong>Títulos principales:</strong> Garamond Bold, 48-72pt</li>
+            <li><strong>Subtítulos:</strong> Garamond Semi-Bold, 24-36pt</li>
+            <li><strong>Cuerpo de texto:</strong> Garamond Regular, 12-16pt</li>
+            <li><strong>Leyendas:</strong> Garamond Regular, 10-12pt</li>
+        </ul>
+    </div>
+
+    <!-- APLICACIONES ATL, BTL Y TTL -->
+    <div id="aplicaciones" class="page">
+        <div class="elegant-title-container">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-left">
+            <img src="encanto_decoracion_encaje.png" alt="" class="decoration-corner decoration-top-right">
+            <h1 class="elegant-title-main">APLICACIONES</h1>
+            <h2 class="elegant-title-subtitle">ATL, BTL y TTL</h2>
+            <div class="elegant-title-line"></div>
+        </div>
+        
+        <p class="content-text" style="text-align: center; max-width: 900px; margin: 0 auto 60px auto;">
+            Encanto Panameño se comunica con su audiencia a través de diversos canales publicitarios. 
+            A continuación se presentan las aplicaciones de la marca en diferentes medios: 
+            ATL (Above The Line - medios masivos), BTL (Below The Line - acciones directas) 
+            y TTL (Through The Line - medios digitales).
+        </p>
+
+        <!-- ATL (Above The Line) -->
+        <h2 class="subsection-title" style="text-align: center; font-size: 32px; color: var(--dorado); margin: 60px 0 40px 0; border: none; padding: 0;">
+            ATL - Above The Line
+        </h2>
+        
+        <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            Campañas en medios masivos tradicionales para alcance amplio y construcción de marca.
+        </p>
+
+        <!-- ATL 1: Prensa Escrita -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Anuncio de Prensa Escrita
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_atl_prensa.png" alt="Anuncio Prensa Encanto Panameño" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Anuncio publicado en periódicos principales de Panamá. 
+                Presenta la marca con imágenes del proceso artesanal y productos terminados, 
+                comunicando los valores de tradición y modernidad. Formato: Página completa.
+            </div>
+        </div>
+
+        <!-- ATL 2: Cartel Publicitario -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Cartel Publicitario
+            </h3>
+            
+            <!-- Grille de 2 carteles -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin: 30px 0;">
+                
+                <!-- Cartel 1 -->
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px;">
+                    <img src="encanto_atl_cartel_1.png" alt="Cartel Publicitario 1 - Billboard en autopista" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                    <p style="text-align: center; color: var(--negro); font-size: 14px; margin-top: 15px; font-style: italic;">
+                        Billboard en autopista urbana
+                    </p>
+                </div>
+                
+                <!-- Cartel 2 -->
+                <div style="background: var(--blanco-perla); padding: 25px; border-radius: 12px;">
+                    <img src="encanto_atl_cartel_2.png" alt="Cartel Publicitario 2 - Billboard en zona urbana" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                    <p style="text-align: center; color: var(--negro); font-size: 14px; margin-top: 15px; font-style: italic;">
+                        Billboard en zona urbana céntrica
+                    </p>
+                </div>
+                
+            </div>
+            
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Carteles publicitarios para vallas y espacios urbanos en Ciudad de Panamá. 
+                Las piezas muestran la empollerada con la Pollera de Gala en contextos urbanos reales, 
+                fusionando tradición con modernidad. Formato: vallas publicitarias de alto impacto en autopistas 
+                y zonas céntricas de alta circulación. Slogan: "Hechos con Orgullo, Inspirados en Nuestra Tierra".
+            </div>
+        </div>
+
+        <!-- ATL 3: Video Comercial para Televisión -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Video Comercial para Televisión
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <a href="https://youtu.be/s8PVFhBm42Y" target="_blank" style="text-decoration: none; display: inline-block; max-width: 900px; width: 100%;">
+                    <div style="position: relative; width: 100%; padding-top: 56.25%; background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); overflow: hidden; cursor: pointer; transition: transform 0.3s ease;">
+                        <img src="https://img.youtube.com/vi/s8PVFhBm42Y/maxresdefault.jpg" alt="Video Comercial" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(197,148,78,0.95); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="white" style="margin-left: 4px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 8px;">
+                            <p style="color: white; font-size: 16px; font-weight: bold; margin: 0;">▶️ Ver en YouTube</p>
+                            <p style="color: #E0E0E0; font-size: 14px; margin: 5px 0 0 0;">Comercial de Televisión - 30 segundos</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Comercial de televisión que presenta la marca Encanto Panameño 
+                destacando el proceso artesanal, la elegancia de los diseños y la conexión con la tradición panameña. 
+                Formato: 30 segundos para televisión nacional.
+            </div>
+        </div>
+
+        <!-- ATL 4: Cuña Radial -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Cuña Radial
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <a href="https://youtu.be/92lfUYNgRtA" target="_blank" style="text-decoration: none; display: inline-block; max-width: 900px; width: 100%;">
+                    <div style="position: relative; width: 100%; padding-top: 56.25%; background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); overflow: hidden; cursor: pointer; transition: transform 0.3s ease;">
+                        <img src="https://img.youtube.com/vi/92lfUYNgRtA/maxresdefault.jpg" alt="Cuña Radial" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(197,148,78,0.95); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="white" style="margin-left: 4px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 8px;">
+                            <p style="color: white; font-size: 16px; font-weight: bold; margin: 0;">▶️ Ver en YouTube</p>
+                            <p style="color: #E0E0E0; font-size: 14px; margin: 5px 0 0 0;">Spot Radial - 30 segundos</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Spot radial que comunica los valores de la marca 
+                y anuncia el lanzamiento oficial. Mensaje centrado en el orgullo, la tradición 
+                y la moda artesanal panameña. Formato: 30 segundos para radio nacional.
+            </div>
+        </div>
+
+        <!-- BTL Section -->
+        <h2 class="subsection-title" style="text-align: center; font-size: 32px; color: var(--dorado); margin: 80px 0 40px 0; border: none; padding: 0;">
+            BTL - Below The Line
+        </h2>
+        
+        <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            Activaciones directas y experiencias de marca en puntos de venta y eventos especiales.
+        </p>
+
+        <!-- BTL 1: Photobooth con marco de encaje -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Photobooth con Marco de Encaje
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_photobooth.png" alt="Photobooth Encanto Panameño" style="max-width: 600px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Marco decorativo con diseño de encaje panameño para photobooths 
+                en eventos y puntos de venta. Permite a los clientes tomarse fotos con el marco de la marca, 
+                creando contenido compartible en redes sociales y experiencias memorables.
+            </div>
+        </div>
+
+        <!-- BTL 2: QR Code con Llavero Decorativo -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                QR Code con Llavero Decorativo
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_qr.png" alt="QR Code Encanto Panameño" style="max-width: 600px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Tarjeta con QR code decorado con elementos de la marca, 
+                acompañada de llavero artesanal con motivos florales. El código QR dirige a contenido 
+                exclusivo y promociones. Texto: "¡Escanéame y recibe una sorpresa!"
+            </div>
+        </div>
+
+        <!-- BTL 3: Pinta tu Cultura -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Activación: "Pinta tu Cultura"
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_pinta_cultura.png" alt="Pinta tu Cultura - Encanto Panameño" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Estación de pintura interactiva donde los visitantes pueden 
+                colorear diseños inspirados en elementos panameños tradicionales (sombreros, polleras, 
+                y otros símbolos culturales). Actividad familiar que conecta con la artesanía y el arte local.
+            </div>
+        </div>
+
+        <!-- BTL 4: Personaliza tu Prenda -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Activación: "Personaliza tu Prenda"
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_personaliza.png" alt="Personaliza tu Prenda - Encanto Panameño" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Estación de personalización donde los clientes pueden 
+                customizar sus prendas con bordados y diseños inspirados en la cultura panameña. 
+                Experiencia hands-on que refuerza el valor de lo artesanal y lo hecho a mano.
+            </div>
+        </div>
+
+        <!-- BTL 5: Pasaporte Cultural -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Pasaporte Cultural
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_pasaporte.png" alt="Pasaporte Cultural - Encanto Panameño" style="max-width: 800px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Pasaporte plegable estilo folleto que los clientes pueden 
+                completar visitando diferentes estaciones de la activación BTL. El interior invita: 
+                "¡Complétalo y llévate una sorpresa!" mientras el exterior muestra el logo de Encanto 
+                Panameño en un diseño elegante con fondo celeste.
+            </div>
+        </div>
+
+        <!-- BTL 6: Sellos de Activación -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Sellos de Activación
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <img src="encanto_btl_sellos.png" alt="Sellos de Activación - Encanto Panameño" style="max-width: 800px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Set de tres sellos circulares para estampar en el pasaporte 
+                cultural al completar cada activación. Incluye "VISITE - PINTA TU CULTURA" (turquesa), 
+                "VISITE - PERSONALIZA TU PRENDA" (coral), y "VISITE EL - PHOTO FRAME" (dorado). 
+                Los sellos gamifican la experiencia y motivan a participar en todas las estaciones.
+            </div>
+        </div>
+
+        <!-- TTL Section -->
+        <h2 class="subsection-title" style="text-align: center; font-size: 32px; color: var(--dorado); margin: 80px 0 40px 0; border: none; padding: 0;">
+            TTL - Through The Line
+        </h2>
+        
+        <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            Contenido digital integrado para redes sociales, sitio web y medios digitales.
+        </p>
+
+        <!-- TTL 1: Instagram Stories Interactivas -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Instagram Stories Interactivas
+            </h3>
+            <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
+                Series de historias diseñadas para generar engagement y conectar con la audiencia 
+                a través de contenido interactivo, educativo y aspiracional.
+            </p>
+
+            <!-- Historia 1: Opciones de Prendas -->
+            <div style="margin: 40px 0;">
+                <h4 style="color: #8B7355; font-size: 20px; margin-bottom: 15px; text-align: center;">
+                    Historia Interactiva: Opciones de Prendas
+                </h4>
+                <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                    <img src="encanto_ttl_historia_opciones.png" alt="Historia Opciones - Encanto Panameño" style="max-width: 400px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                </div>
+                <div class="quote" style="margin: 20px 0;">
+                    <strong>Descripción:</strong> Story interactiva que pregunta: "Si pudieras vestirte hoy 
+                    con alguna de estas prendas, ¿cuál elegirías?" Muestra 5 diseños diferentes de la colección 
+                    (vestidos bordados, blusas con motivos panameños, llavero bandera, t-shirts). 
+                    Genera engagement y permite conocer las preferencias de la audiencia.
+                </div>
+            </div>
+
+            <!-- Historia 2: Storytelling de Marca -->
+            <div style="margin: 40px 0;">
+                <h4 style="color: #8B7355; font-size: 20px; margin-bottom: 15px; text-align: center;">
+                    Historia de Marca: "Detrás de Cada Prenda"
+                </h4>
+                <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                    <img src="encanto_ttl_historia_recordatorio.png" alt="Historia Recordatorio - Encanto Panameño" style="max-width: 400px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                </div>
+                <div class="quote" style="margin: 20px 0;">
+                    <strong>Descripción:</strong> Story emotiva que muestra el proceso artesanal con mensaje: 
+                    "Detrás de Cada Prenda Hay una Historia Panameña Tejida a mano". Incluye imagen del águila 
+                    harpía (símbolo nacional) bordada y manos artesanas trabajando. Refuerza los valores de 
+                    tradición, calidad y orgullo nacional.
+                </div>
+            </div>
+
+            <!-- Historia 3: Cajita de Preguntas -->
+            <div style="margin: 40px 0;">
+                <h4 style="color: #8B7355; font-size: 20px; margin-bottom: 15px; text-align: center;">
+                    Historia Interactiva: Cajita de Preguntas
+                </h4>
+                <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                    <img src="encanto_ttl_historia_preguntas.png" alt="Historia Preguntas - Encanto Panameño" style="max-width: 400px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                </div>
+                <div class="quote" style="margin: 20px 0;">
+                    <strong>Descripción:</strong> Story con cajita de preguntas: "¿Ya viste la colección de 
+                    Encanto Panameño? Pregúntanos acerca de nuestras prendas". Fomenta la conversación directa 
+                    con clientes potenciales, permite resolver dudas sobre productos, tallas, personalización 
+                    y disponibilidad. @encantopanameno
+                </div>
+            </div>
+        </div>
+
+        <!-- TTL 2: Carousel Instagram -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Carousel Instagram
+            </h3>
+            <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
+                Serie de 6 posts diseñados para formato carousel de Instagram que narran la historia 
+                y valores de Encanto Panameño. Cada slide presenta un aspecto diferente de la marca 
+                con diseño cohesivo y mensaje inspirador.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0;">
+                <!-- Slide 1: Moda con Identidad -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_1.png" alt="Carousel 1 - Moda con Identidad" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 1:</strong> Moda con Identidad - Modelo con pollera bordada azul
+                    </p>
+                </div>
+
+                <!-- Slide 2: Vive tu Identidad -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_2.png" alt="Carousel 2 - Vive tu Identidad" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 2:</strong> Vive tu Identidad - Inspiración en la Pollera de Gala
+                    </p>
+                </div>
+
+                <!-- Slide 3: Elegancia Artesanal -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_3.png" alt="Carousel 3 - Elegancia Artesanal" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 3:</strong> Elegancia Artesanal - Hecho a mano por artesanas
+                    </p>
+                </div>
+
+                <!-- Slide 4: Moda con Historia -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_4.png" alt="Carousel 4 - Moda con Historia" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 4:</strong> Moda con Historia - Los pequeños detalles cuentan historias
+                    </p>
+                </div>
+
+                <!-- Slide 5: Raíces que Inspiran -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_5.png" alt="Carousel 5 - Raíces que Inspiran" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 5:</strong> Raíces que Inspiran - Hechos con orgullo
+                    </p>
+                </div>
+
+                <!-- Slide 6: Vístete de Historia -->
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px;">
+                    <img src="encanto_ttl_carousel_6.png" alt="Carousel 6 - Vístete de Historia" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 15px;">
+                    <p style="color: #8B7355; font-size: 14px; text-align: center; margin: 0;">
+                        <strong>Slide 6:</strong> Vístete de Historia - Call to action (Like, Comenta, Comparte, Guárdalo)
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción del Carousel:</strong><br>
+                Post de Instagram en formato carousel de 6 slides que cuenta la historia completa de la marca:
+                <ul style="margin: 15px 0; padding-left: 40px;">
+                    <li><strong>Slide 1 - Moda con Identidad:</strong> Modelo con vestido bordado azul, flecha interactiva invitando a deslizar</li>
+                    <li><strong>Slide 2 - Vive tu Identidad:</strong> Dos mujeres con polleras de gala tradicionales en desfile</li>
+                    <li><strong>Slide 3 - Elegancia Artesanal:</strong> Manos artesanas bordando tela, proceso manual</li>
+                    <li><strong>Slide 4 - Moda con Historia:</strong> Close-up de bordado rojo floral, detalle artesanal</li>
+                    <li><strong>Slide 5 - Raíces que Inspiran:</strong> Arquitectura colonial del Casco Viejo, conexión con patrimonio</li>
+                    <li><strong>Slide 6 - Vístete de Historia:</strong> Call-to-action con iconos de engagement (❤️ Dale Like, 💬 Comenta, ✈️ Comparte, 🔖 Guárdalo)</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 20px;">Propósito:</strong> 
+                Narrar visualmente la propuesta de valor de Encanto Panameño, desde la inspiración cultural 
+                hasta el proceso artesanal, culminando con un llamado a la interacción. Formato optimizado 
+                para maximizar engagement y shares.
+            </div>
+        </div>
+
+        <!-- TTL 3: Reel Instagram -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Reel Instagram
+            </h3>
+            <div style="text-align: center; background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                <a href="https://youtube.com/shorts/s4aXIAo2S3c" target="_blank" style="text-decoration: none; display: inline-block; max-width: 315px; width: 100%;">
+                    <div style="position: relative; width: 100%; padding-top: 177.78%; background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); overflow: hidden; cursor: pointer; transition: transform 0.3s ease;">
+                        <img src="https://img.youtube.com/vi/s4aXIAo2S3c/maxresdefault.jpg" alt="Reel Instagram" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(197,148,78,0.95); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left: 3px;">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div style="position: absolute; bottom: 20px; left: 15px; right: 15px; background: rgba(0,0,0,0.85); padding: 12px; border-radius: 8px;">
+                            <p style="color: white; font-size: 14px; font-weight: bold; margin: 0;">📱 Ver en YouTube</p>
+                            <p style="color: #E0E0E0; font-size: 12px; margin: 5px 0 0 0;">Reel vertical</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="quote" style="margin: 30px 0;">
+                <strong>Descripción:</strong> Reel dinámico que presenta la colección de Encanto Panameño 
+                con música tradicional panameña. Muestra los diseños, el proceso artesanal y la conexión 
+                con la cultura local. Formato vertical optimizado para Instagram, con subtítulos y 
+                llamado a la acción para visitar el perfil o tienda. Contenido viral diseñado para alcance 
+                orgánico y compartido.
+            </div>
+        </div>
+
+        <!-- TTL 4: Estrategia Digital -->
+        <div style="margin: 60px 0;">
+            <h3 style="color: var(--dorado); font-size: 24px; margin-bottom: 20px; text-align: center;">
+                Estrategia de Contenido Digital
+            </h3>
+            <div class="quote" style="margin: 20px 0;">
+                <strong>Plataformas principales:</strong>
+                <ul style="margin: 15px 0; padding-left: 40px;">
+                    <li>Instagram: @encantopanameno - Stories, Reels, Posts</li>
+                    <li>Facebook: Encanto Panameño - Comunidad y atención al cliente</li>
+                    <li>TikTok: Contenido viral y educativo sobre cultura panameña</li>
+                    <li>Website: encantopanameno.com - Tienda online y catálogo</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 20px;">Tipos de contenido:</strong>
+                <ul style="margin: 15px 0; padding-left: 40px;">
+                    <li>Behind the scenes del proceso artesanal</li>
+                    <li>Stories interactivas con encuestas y preguntas</li>
+                    <li>Reels educativos sobre la pollera de gala y símbolos panameños</li>
+                    <li>Testimonios de clientes usando las prendas</li>
+                    <li>Colaboraciones con influencers y artesanas locales</li>
+                    <li>Lanzamientos de colecciones y productos</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 20px;">Frecuencia de publicación:</strong>
+                <ul style="margin: 15px 0; padding-left: 40px;">
+                    <li>Stories diarias: 3-5 por día</li>
+                    <li>Posts en feed: 3-4 por semana</li>
+                    <li>Reels: 2-3 por semana</li>
+                    <li>Live sessions: 1 por mes (Q&A, behind the scenes)</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- RESTRICCIONES -->
+    <div id="restricciones" class="page">
+        <h1 class="section-title">Usos No Permitidos</h1>
+        
+        <h2 class="subsection-title">Restricciones de Uso</h2>
+        
+        <p class="content-text" style="margin-bottom: 60px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Para mantener la integridad y reconocimiento de la marca, es fundamental respetar las siguientes restricciones. 
+            A continuación, se muestran ejemplos visuales de usos NO permitidos del logo.
+        </p>
+
+        <!-- Grid de 3 restricciones -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin: 40px 0; align-items: stretch;">
+            
+            <!-- Restricción 1: Paleta de Colores y Fondos -->
+            <div style="display: flex; flex-direction: column; height: 100%;">
+                <h3 style="color: #E74C3C; font-size: 18px; margin-bottom: 20px; line-height: 1.4; text-align: center;">❌ NO alterar la paleta de colores, ni usar en fondos estampados</h3>
+                
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px; margin-bottom: 20px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="encanto_restriccion_colores_fondos.png" alt="Restricción - Colores y Fondos" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                
+                <div style="text-align: left; font-size: 14px; line-height: 1.6;">
+                    <p style="margin-bottom: 10px;"><strong style="color: #E74C3C;">Prohibido:</strong></p>
+                    <ul style="margin: 0 0 15px 20px; padding: 0;">
+                        <li>Cambiar los colores del logo</li>
+                        <li>Usar sobre fondos estampados</li>
+                        <li>Comprometer la legibilidad</li>
+                    </ul>
+                    <p><strong style="color: var(--dorado);">Siempre usar:</strong> Colores oficiales sobre fondos sólidos.</p>
+                </div>
+            </div>
+
+            <!-- Restricción 2: Elementos Gráficos -->
+            <div style="display: flex; flex-direction: column; height: 100%;">
+                <h3 style="color: #E74C3C; font-size: 18px; margin-bottom: 20px; line-height: 1.4; text-align: center;">❌ NO alterar los elementos gráficos</h3>
+                
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px; margin-bottom: 20px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="encanto_restriccion_elementos.png" alt="Restricción - Elementos Gráficos" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                
+                <div style="text-align: left; font-size: 14px; line-height: 1.6;">
+                    <p style="margin-bottom: 10px;"><strong style="color: #E74C3C;">Prohibido:</strong></p>
+                    <ul style="margin: 0 0 15px 20px; padding: 0;">
+                        <li>Separar los elementos del logo</li>
+                        <li>Usar solo figura o solo texto</li>
+                        <li>Deformar o reorganizar</li>
+                    </ul>
+                    <p><strong style="color: var(--dorado);">Siempre usar:</strong> Logo completo con elementos intactos.</p>
+                </div>
+            </div>
+
+            <!-- Restricción 3: Tipografía -->
+            <div style="display: flex; flex-direction: column; height: 100%;">
+                <h3 style="color: #E74C3C; font-size: 18px; margin-bottom: 20px; line-height: 1.4; text-align: center;">❌ NO Modificar la Tipografía</h3>
+                
+                <div style="background: var(--blanco-perla); padding: 20px; border-radius: 12px; margin-bottom: 20px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                    <img src="encanto_restriccion_tipografia.png" alt="Restricción - Tipografía" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                
+                <div style="text-align: left; font-size: 14px; line-height: 1.6;">
+                    <p style="margin-bottom: 10px;"><strong style="color: #E74C3C;">Prohibido:</strong></p>
+                    <ul style="margin: 0 0 15px 20px; padding: 0;">
+                        <li>Texto solo sin gráficos</li>
+                        <li>Cambiar fuente o colores</li>
+                        <li>Mezclar colores (dorado/turquesa)</li>
+                    </ul>
+                    <p><strong style="color: var(--dorado);">Siempre usar:</strong> EB Garamond en dorado original.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Note importante -->
+        <div style="background: linear-gradient(135deg, #FCAEAE 0%, #E7DCC7 100%); padding: 25px; border-radius: 12px; margin: 50px auto; max-width: 900px; text-align: center;">
+            <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--negro);">⚠️ Importante</h3>
+            <p style="font-size: 16px; line-height: 1.6; margin: 0; color: var(--negro);">
+                Estas restricciones son fundamentales para mantener la identidad visual de Encanto Panameño. 
+                Cualquier uso del logo debe respetar estas normas para garantizar coherencia y profesionalismo.
+            </p>
+        </div>
+        
+        <h2 class="subsection-title">Área de Protección</h2>
+        <p class="content-text">
+            Mantener siempre un espacio de protección equivalente a la altura de la letra "O" de "ENCANTO" alrededor del logo. Este espacio debe permanecer libre de cualquier otro elemento gráfico o texto.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin: 40px 0;">
+            
+            <!-- Área de Protección 1 -->
+            <div style="text-align: center;">
+                <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                    <img src="encanto_area_proteccion_puntos.png" alt="Área de Protección - Bordura en puntos" style="max-width: 500px; width: 100%; height: auto;">
+                </div>
+                <h3 style="color: var(--dorado); font-size: 18px; margin-top: 20px;">Zona de Protección - Versión 1</h3>
+                <p style="color: var(--negro); font-size: 14px; margin-top: 10px;">
+                    Espacio mínimo delimitado con bordura decorativa
+                </p>
+            </div>
+
+            <!-- Área de Protección 2 -->
+            <div style="text-align: center;">
+                <div style="background: var(--blanco-perla); padding: 30px; border-radius: 12px;">
+                    <img src="encanto_area_proteccion_marco.png" alt="Área de Protección - Marco doble" style="max-width: 500px; width: 100%; height: auto;">
+                </div>
+                <h3 style="color: var(--dorado); font-size: 18px; margin-top: 20px;">Zona de Protección - Versión 2</h3>
+                <p style="color: var(--negro); font-size: 14px; margin-top: 10px;">
+                    Espacio mínimo delimitado con marco doble
+                </p>
+            </div>
+
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FCAEAE 0%, #E7DCC7 100%); padding: 30px; border-radius: 12px; margin-top: 30px;">
+            <h3 style="color: var(--negro); font-size: 20px; margin-bottom: 15px;">⚠️ Importante</h3>
+            <ul style="color: var(--negro); line-height: 1.8;">
+                <li><strong>Respeta el espacio de protección:</strong> Este margen garantiza que el logo sea visible y legible en todas las aplicaciones</li>
+                <li><strong>Sin superposiciones:</strong> Ningún texto, imagen o elemento gráfico debe invadir esta zona</li>
+                <li><strong>Medida de referencia:</strong> La altura de la letra "O" de "ENCANTO" define el espacio mínimo en todos los lados</li>
+                <li><strong>Escalabilidad:</strong> Esta proporción se mantiene independientemente del tamaño del logo</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONCLUSIÓN -->
+    <div class="page cover">
+        <h1 style="font-size: 60px; color: var(--dorado); margin-bottom: 40px;">ENCANTO PANAMEÑO</h1>
+        <div style="max-width: 700px; text-align: center;">
+            <p style="font-size: 24px; line-height: 1.8; color: var(--negro);">
+                Cada hilo, color y detalle es un tributo a nuestra historia, reinterpretado con diseño contemporáneo y materiales responsables.
+            </p>
+            <p style="font-size: 18px; margin-top: 40px; color: #666; font-style: italic;">
+                Vestir Panamá con orgullo y proyectar su cultura al mundo.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show navigation after splash screen
+        setTimeout(() => {
+            document.querySelector('nav').style.display = 'block';
+        }, 3500);
+    </script>
+
+</body>
+</html>
